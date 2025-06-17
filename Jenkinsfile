@@ -8,10 +8,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM',
-                    branches: [[name: 'refs/heads/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/Oren1984/myapp.git']]
-                ])
+                checkout scm
             }
         }
         stage('Build Docker Image') {
