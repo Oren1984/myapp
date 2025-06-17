@@ -7,16 +7,11 @@ pipeline {
                 cleanWs()
             }
         }
-        stage('Check Git') {
-            steps {
-                sh 'git --version'
-            }
-        }
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', 
-                    branches: [[name: 'refs/heads/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/oren1984/myapp.git']]])
+                checkout([$class: 'GitSCM',
+                    branches: [[name: 'refs/heads/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/Oren1984/myapp.git']]])
             }
         }
         stage('Build Docker Image') {
