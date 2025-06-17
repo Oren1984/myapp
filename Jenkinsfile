@@ -19,6 +19,16 @@ pipeline {
                 }
             }
         }
+        stage('Stop Previous Container') {
+            steps {
+                script {
+                    sh """
+                        docker ps -q --filter "ancestor=myapp:${env.BUILD_NUMBER}" | xargs -r docker stop
+                        docker ps -aq --filter "ancestor=myapp:${env.BUILD_NUMBER}" | xargs -r docker rm
+                    """
+                }
+            }
+        }
         stage('Run Docker Container') {
             steps {
                 script {
