@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', erl: 'https://github.com/oren1984/myapp.git'
+                git branch: 'main', url: 'https://github.com/oren1984/myapp.git'
             }
         }
         stage('Build Docker Image') {
