@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Clean Workspace') {
             steps {
@@ -11,7 +10,8 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: 'refs/heads/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/Oren1984/myapp.git']]])
+                    userRemoteConfigs: [[url: 'https://github.com/Oren1984/myapp.git']]
+                ])
             }
         }
         stage('Build Docker Image') {
